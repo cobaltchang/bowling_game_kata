@@ -16,3 +16,10 @@ class GameTestCase(unittest.TestCase):
             game.roll(0)
 
         self.assertEqual(game.score(), 0)
+
+    def test_roll_all_ones(self):
+        game = Game()
+        for i in range(20):
+            game.roll(1)
+
+        self.assertEqual(game.score(), 20)
