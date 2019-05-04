@@ -8,7 +8,9 @@ class Game:
 
     def score(self):
         score = 0
-        for i in range(len(self._scores)):
-            score += self._scores[i]
+        roll_index = 0
+        for frame in range(10):
+            score += self._scores[roll_index] + self._scores[roll_index + 1]
+            roll_index += 2
 
         return score
