@@ -26,3 +26,11 @@ class GameTestCase(unittest.TestCase):
         self._roll_many(1, 20)
 
         self.assertEqual(self.game.score(), 20)
+
+    def test_roll_one_spare(self):
+        self.game.roll(4)
+        self.game.roll(6)
+        self.game.roll(3)
+        self._roll_many(0, 17)
+
+        self.assertEqual(self.game.score(), 16)
