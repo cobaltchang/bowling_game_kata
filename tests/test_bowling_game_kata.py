@@ -17,6 +17,10 @@ class GameTestCase(unittest.TestCase):
         for i in range(times):
             self.game.roll(pins)
 
+    def _roll_spare(self):
+        self.game.roll(4)
+        self.game.roll(6)
+
     def test_roll_all_zeros(self):
         self._roll_many(0, 20)
 
@@ -28,8 +32,7 @@ class GameTestCase(unittest.TestCase):
         self.assertEqual(self.game.score(), 20)
 
     def test_roll_one_spare(self):
-        self.game.roll(4)
-        self.game.roll(6)
+        self._roll_spare()
         self.game.roll(3)
         self._roll_many(0, 17)
 
