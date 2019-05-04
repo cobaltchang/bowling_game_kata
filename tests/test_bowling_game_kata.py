@@ -37,3 +37,11 @@ class GameTestCase(unittest.TestCase):
         self._roll_many(0, 17)
 
         self.assertEqual(self.game.score(), 16)
+
+    def test_roll_one_strike(self):
+        self.game.roll(10)
+        self.game.roll(2)
+        self.game.roll(4)
+        self._roll_many(0, 16)
+
+        self.assertEqual(self.game.score(), 22)

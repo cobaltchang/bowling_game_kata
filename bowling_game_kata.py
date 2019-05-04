@@ -10,7 +10,10 @@ class Game:
         score = 0
         roll_index = 0
         for frame in range(10):
-            if self._is_spare(roll_index):
+            if self._scores[roll_index] == 10:
+                score += 10 + self._scores[roll_index + 1] + self._scores[roll_index + 2]
+                roll_index += 1
+            elif self._is_spare(roll_index):
                 score += 10 + self._scores[roll_index + 2]
                 roll_index += 2
             else:
