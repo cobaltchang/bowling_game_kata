@@ -48,3 +48,8 @@ class GameTestCase(unittest.TestCase):
         self._roll_many(0, 16)
 
         self.assertEqual(self.game.score(), 22)
+
+    def test_perfect_game(self):
+        self._roll_many(10, 12)
+
+        self.assertEqual(self.game.score(), 300)
