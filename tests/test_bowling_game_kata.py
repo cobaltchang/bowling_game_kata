@@ -10,16 +10,19 @@ from bowling_game_kata import Game  # noqa: E402
 
 class GameTestCase(unittest.TestCase):
 
-    def test_roll_all_zeros(self):
-        game = Game()
-        for i in range(20):
-            game.roll(0)
+    def setUp(self):
+        self.game = Game()
 
-        self.assertEqual(game.score(), 0)
+    def _roll_many(self, pins, times):
+        for i in range(times):
+            self.game.roll(pins)
+
+    def test_roll_all_zeros(self):
+        self._roll_many(0, 20)
+
+        self.assertEqual(self.game.score(), 0)
 
     def test_roll_all_ones(self):
-        game = Game()
-        for i in range(20):
-            game.roll(1)
+        self._roll_many(1, 20)
 
-        self.assertEqual(game.score(), 20)
+        self.assertEqual(self.game.score(), 20)
